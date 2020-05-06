@@ -8,7 +8,8 @@
 
 <html>
 <head>
-<title><fmt:message key="views.orders.updateOrder_jsp.title.Update_order" /></title>
+<title><fmt:message
+		key="views.orders.updateOrder_jsp.title.Update_order" /></title>
 <style>
 body {
 	background-image: url("images/air2.jpg");
@@ -21,10 +22,11 @@ body {
 </head>
 
 <body>
-<fmt:setBundle basename="resources" />
+	<fmt:setBundle basename="resources" />
 	<div align="center" style="padding-top: 20%">
-		<h1><fmt:message key="views.orders.updateOrder_jsp.h1.Updating_Order" /></h1>
-
+		<h1>
+			<fmt:message key="views.orders.updateOrder_jsp.h1.Updating_Order" />
+		</h1>
 
 		<div>
 			<%
@@ -71,7 +73,10 @@ body {
 				</form>
 			</div>
 		</div>
-		<button onclick="location.href='/aviacompany_project/orders'"><fmt:message key="views.orders.updateOrder_jsp.button.All_Orders_Table" /></button>
+		<button onclick="location.href='/aviacompany_project/orders'">
+			<fmt:message
+				key="views.orders.updateOrder_jsp.button.All_Orders_Table" />
+		</button>
 	</div>
 </body>
 </html>

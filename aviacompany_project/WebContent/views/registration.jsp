@@ -18,7 +18,7 @@ body {
 </head>
 
 <body>
-<fmt:setBundle basename="resources" />
+	<fmt:setBundle basename="resources" />
 	<div align="center" style="padding-top: 15%">
 		<h1>Registration</h1>
 	</div>
@@ -31,11 +31,11 @@ body {
 				out.println("<p>Fill in all user parameters!</p>");
 			}
 		%>
-		
+
 		<%
-			if (request.getAttribute("isUnique") != null && (boolean)request.getAttribute("isUnique") == false) {
+			if (request.getAttribute("isUnique") != null && (boolean) request.getAttribute("isUnique") == false) {
 				out.println("<p>User already exists!</p>");
-			} 
+			}
 		%>
 
 		<div align="center" style="padding-top: 20px">

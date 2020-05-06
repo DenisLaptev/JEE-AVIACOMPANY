@@ -8,7 +8,8 @@
 
 <html>
 <head>
-<title><fmt:message key="views.orders.allOrders_jsp.title.All_Orders" /></title>
+<title><fmt:message
+		key="views.orders.allOrders_jsp.title.All_Orders" /></title>
 <style>
 body {
 	background-image: url("images/air2.jpg");
@@ -20,9 +21,11 @@ body {
 </style>
 </head>
 <body>
-<fmt:setBundle basename="resources" />
+	<fmt:setBundle basename="resources" />
 	<div align="center">
-		<h1><fmt:message key="views.orders.allOrders_jsp.h1.All_Orders_Table" /></h1>
+		<h1>
+			<fmt:message key="views.orders.allOrders_jsp.h1.All_Orders_Table" />
+		</h1>
 
 		<br>
 		<%
@@ -48,11 +51,16 @@ body {
 			<%
 				if (registeredUser != null && registeredUser.getRole().equals("dispatcher")) {
 			%>
-			<button onclick="location.href='/aviacompany_project/add-order'"><fmt:message key="views.orders.allOrders_jsp.button.Add_Order" /></button>
+			<button onclick="location.href='/aviacompany_project/add-order'">
+				<fmt:message key="views.orders.allOrders_jsp.button.Add_Order" />
+			</button>
 			<%
 				}
 			%>
-			<button onclick="location.href='/aviacompany_project/my-account'"><fmt:message key="views.orders.allOrders_jsp.button.Back_to_main_page" /></button>
+			<button onclick="location.href='/aviacompany_project/my-account'">
+				<fmt:message
+					key="views.orders.allOrders_jsp.button.Back_to_main_page" />
+			</button>
 
 		</div>
 		<br> <br>
@@ -129,11 +137,16 @@ body {
 			<%
 				if (registeredUser != null && registeredUser.getRole().equals("dispatcher")) {
 			%>
-			<button onclick="location.href='/aviacompany_project/add-order'"><fmt:message key="views.orders.allOrders_jsp.button.Add_Order" /></button>
+			<button onclick="location.href='/aviacompany_project/add-order'">
+				<fmt:message key="views.orders.allOrders_jsp.button.Add_Order" />
+			</button>
 			<%
 				}
 			%>
-			<button onclick="location.href='/aviacompany_project/my-account'"><fmt:message key="views.orders.allOrders_jsp.button.Back_to_main_page" /></button>
+			<button onclick="location.href='/aviacompany_project/my-account'">
+				<fmt:message
+					key="views.orders.allOrders_jsp.button.Back_to_main_page" />
+			</button>
 
 		</div>
 	</div>

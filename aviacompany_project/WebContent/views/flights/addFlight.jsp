@@ -6,7 +6,8 @@
 
 <html>
 <head>
-<title><fmt:message key="views.flights.addFlight_jsp.title.Add_new_flight" /></title>
+<title><fmt:message
+		key="views.flights.addFlight_jsp.title.Add_new_flight" /></title>
 <style>
 body {
 	background-image: url("images/air2.jpg");
@@ -21,8 +22,9 @@ body {
 <body>
 	<fmt:setBundle basename="resources" />
 	<div align="center" style="padding-top: 20%">
-		<h1><fmt:message key="views.flights.addFlight_jsp.h1.Adding_New_Flight" /></h1>
-
+		<h1>
+			<fmt:message key="views.flights.addFlight_jsp.h1.Adding_New_Flight" />
+		</h1>
 
 		<%
 			User registeredUser = (User) session.getAttribute("registeredUser");
@@ -63,7 +65,10 @@ body {
 				</form>
 			</div>
 		</div>
-		<button onclick="location.href='/aviacompany_project/flights'"><fmt:message key="views.flights.addFlight_jsp.button.All_Flights_Table" /></button>
+		<button onclick="location.href='/aviacompany_project/flights'">
+			<fmt:message
+				key="views.flights.addFlight_jsp.button.All_Flights_Table" />
+		</button>
 	</div>
 </body>
 </html>

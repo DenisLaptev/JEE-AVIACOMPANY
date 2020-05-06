@@ -37,7 +37,6 @@ body {
 			%>
 
 			<div>
-
 				<table cellspacing="2" border="1" cellpadding="5" width="300">
 					<tr>
 						<td>Id:</td>

@@ -6,7 +6,8 @@
 
 <html>
 <head>
-<title><fmt:message key="views.flights.selectFlightById_jsp.title.Select_flight" /></title>
+<title><fmt:message
+		key="views.flights.selectFlightById_jsp.title.Select_flight" /></title>
 <style>
 body {
 	background-image: url("images/air2.jpg");
@@ -19,10 +20,12 @@ body {
 </head>
 
 <body>
-<fmt:setBundle basename="resources" />
+	<fmt:setBundle basename="resources" />
 	<div align="center" style="padding-top: 20%">
-		<h1><fmt:message key="views.flights.selectFlightById_jsp.h1.Selecting_Flight_by_Id" /></h1>
-
+		<h1>
+			<fmt:message
+				key="views.flights.selectFlightById_jsp.h1.Selecting_Flight_by_Id" />
+		</h1>
 
 		<div>
 			<div>
@@ -42,7 +45,10 @@ body {
 				</form>
 			</div>
 		</div>
-		<button onclick="location.href='/aviacompany_project/flights'"><fmt:message key="views.flights.selectFlightById_jsp.button.All_Flights_Table" /></button>
+		<button onclick="location.href='/aviacompany_project/flights'">
+			<fmt:message
+				key="views.flights.selectFlightById_jsp.button.All_Flights_Table" />
+		</button>
 	</div>
 </body>
 </html>

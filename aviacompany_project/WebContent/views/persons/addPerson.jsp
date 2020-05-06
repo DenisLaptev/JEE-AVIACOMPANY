@@ -6,7 +6,8 @@
 
 <html>
 <head>
-<title><fmt:message key="views.persons.addPerson_jsp.title.Add_new_person" /></title>
+<title><fmt:message
+		key="views.persons.addPerson_jsp.title.Add_new_person" /></title>
 <style>
 body {
 	background-image: url("images/air2.jpg");
@@ -19,9 +20,11 @@ body {
 </head>
 
 <body>
-<fmt:setBundle basename="resources" />
+	<fmt:setBundle basename="resources" />
 	<div align="center" style="padding-top: 20%">
-		<h1><fmt:message key="views.persons.addPerson_jsp.h1.Adding_New_Person" /></h1>
+		<h1>
+			<fmt:message key="views.persons.addPerson_jsp.h1.Adding_New_Person" />
+		</h1>
 
 		<%
 			User registeredUser = (User) session.getAttribute("registeredUser");
@@ -29,8 +32,8 @@ body {
 		<div>
 			<%
 				if (request.getAttribute("lastName") != null && request.getAttribute("lastName") != "") {
-				out.println("<p>Person '" + request.getAttribute("lastName") + "' added!</p>");
-			}
+					out.println("<p>Person '" + request.getAttribute("lastName") + "' added!</p>");
+				}
 			%>
 			<div>
 

@@ -2,64 +2,64 @@ package main.java.model;
 
 public class Person {
 
-    private int idPerson;
-    private int idPersonal;
-    private String firstName;
-    private String lastName;
-    private String profession;
+	private int idPerson;
+	private int idPersonal;
+	private String firstName;
+	private String lastName;
+	private String profession;
 
-    public Person() {
-    }
+	public Person() {
+	}
 
-    public Person(int idPerson, int idPersonal, String firstName, String lastName, String profession) {
-    	this.idPerson = idPerson;
-    	this.idPersonal = idPersonal;
+	public Person(int idPerson, int idPersonal, String firstName, String lastName, String profession) {
+		this.idPerson = idPerson;
+		this.idPersonal = idPersonal;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.profession = profession;
 	}
 
 	public int getIdPerson() {
-        return idPerson;
-    }
+		return idPerson;
+	}
 
-    public void setIdPerson(int idPerson) {
-        this.idPerson = idPerson;
-    }
+	public void setIdPerson(int idPerson) {
+		this.idPerson = idPerson;
+	}
 
-    public int getIdPersonal() {
-        return idPersonal;
-    }
+	public int getIdPersonal() {
+		return idPersonal;
+	}
 
-    public void setIdPersonal(int idPersonal) {
-        this.idPersonal = idPersonal;
-    }
+	public void setIdPersonal(int idPersonal) {
+		this.idPersonal = idPersonal;
+	}
 
-    public String getFirstName() {
-        return firstName;
-    }
+	public String getFirstName() {
+		return firstName;
+	}
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
 
-    public String getLastName() {
-        return lastName;
-    }
+	public String getLastName() {
+		return lastName;
+	}
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
 
-    public String getProfession() {
-        return profession;
-    }
+	public String getProfession() {
+		return profession;
+	}
 
-    public void setProfession(String profession) {
-        this.profession = profession;
-    }
+	public void setProfession(String profession) {
+		this.profession = profession;
+	}
 
-    @Override
+	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;

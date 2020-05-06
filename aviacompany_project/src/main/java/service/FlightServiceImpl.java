@@ -14,6 +14,7 @@ public class FlightServiceImpl implements FlightService {
 
 	@Override
 	public List<Flight> getAllFlights() {
+		
 		FlightDAO flightDAO = new FlightDAOImpl();
 		List<Flight> allFlightsList = new ArrayList<>();
 		allFlightsList = flightDAO.getAllFlights();
@@ -22,6 +23,7 @@ public class FlightServiceImpl implements FlightService {
 
 	@Override
 	public List<Flight> getFlightByFromByToByDate(String from, String to, String date) {
+		
 		FlightDAO flightDAO = new FlightDAOImpl();
 		List<Flight> flightsList = new ArrayList<>();
 		flightsList = flightDAO.getFlightByFromByToByDate(from, to, date);
@@ -69,6 +71,7 @@ public class FlightServiceImpl implements FlightService {
 
 	@Override
 	public Flight getFlightById(int idFlight) {
+		
 		FlightDAO flightDAO = new FlightDAOImpl();
 		Flight flight = flightDAO.getFlightById(idFlight);
 		return flight;
@@ -76,6 +79,7 @@ public class FlightServiceImpl implements FlightService {
 
 	@Override
 	public Flight updateFlight(int idFlight, Flight newFlight) {
+		
 		FlightDAO flightDAO = new FlightDAOImpl();
 		Flight updatedFlight = flightDAO.updateFlight(idFlight, newFlight);
 
@@ -85,6 +89,7 @@ public class FlightServiceImpl implements FlightService {
 
 	@Override
 	public boolean deleteFlightById(int idFlight) {
+		
 		FlightDAO flightDAO = new FlightDAOImpl();
 		boolean result = flightDAO.deleteFlightById(idFlight);
 
@@ -94,6 +99,7 @@ public class FlightServiceImpl implements FlightService {
 
 	@Override
 	public boolean addFlight(Flight flight) {
+		
 		FlightDAO flightDAO = new FlightDAOImpl();
 		boolean result = flightDAO.addFlight(flight);
 		return result;

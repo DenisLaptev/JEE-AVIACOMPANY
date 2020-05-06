@@ -6,7 +6,8 @@
 
 <html>
 <head>
-<title><fmt:message key="views.flights.updateFlight_jsp.title.Update_flight" /></title>
+<title><fmt:message
+		key="views.flights.updateFlight_jsp.title.Update_flight" /></title>
 <style>
 body {
 	background-image: url("images/air2.jpg");
@@ -19,11 +20,13 @@ body {
 </head>
 
 <body>
-<fmt:setBundle basename="resources" />
+	<fmt:setBundle basename="resources" />
 	<div align="center" style="padding-top: 20%">
 
-		<h1><fmt:message key="views.flights.updateFlight_jsp.button.All_Flights_Table" /></h1>
-
+		<h1>
+			<fmt:message
+				key="views.flights.updateFlight_jsp.button.All_Flights_Table" />
+		</h1>
 
 		<div>
 			<%
@@ -91,27 +94,11 @@ body {
 								value="Submit"></td>
 						</tr>
 					</table>
-					<%--
-                            <label>Name:
-                                <input type="text" name="name"><br/>
-                            </label>
-                            <label>From:
-                                <input type="text" name="from"><br/>
-                            </label>
-                            <label>To:
-                                <input type="text" name="to"><br/>
-                            </label>
-                            <label>Date:
-                                <input type="text" name="date"><br/>
-                            </label>
-                            <button type="submit">Submit</button>
-            --%>
 				</form>
 			</div>
 		</div>
-	
-	<button onclick="location.href='/aviacompany_project/flights'">All
-		Flights Table</button>
-</div>
+		<button onclick="location.href='/aviacompany_project/flights'">All
+			Flights Table</button>
+	</div>
 </body>
 </html>

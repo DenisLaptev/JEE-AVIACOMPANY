@@ -37,5 +37,4 @@ public class DeletePersonalByIdServlet extends HttpServlet {
 
 		response.sendRedirect("/aviacompany_project/personals");
 	}
-
 }

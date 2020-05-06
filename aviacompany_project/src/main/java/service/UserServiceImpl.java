@@ -9,60 +9,66 @@ import main.java.model.User;
 
 public class UserServiceImpl implements UserService {
 
-    @Override
-    public List<User> getAllUsers() {
-        UserDAO userDAO = new UserDAOImpl();
-        List<User> allUsersList = new ArrayList<>();
-        allUsersList = userDAO.getAllUsers();
-        return allUsersList;
-    }
+	@Override
+	public List<User> getAllUsers() {
 
-    @Override
-    public User getUserById(int idUser) {
-        UserDAO userDAO = new UserDAOImpl();
-        User user = userDAO.getUserById(idUser);
-        return user;
-    }
+		UserDAO userDAO = new UserDAOImpl();
+		List<User> allUsersList = new ArrayList<>();
+		allUsersList = userDAO.getAllUsers();
+		return allUsersList;
+	}
 
-    @Override
-    public User updateUser(int idUser, User newUser) {
-        UserDAO userDAO = new UserDAOImpl();
-        User updatedUser = userDAO.updateUser(idUser, newUser);
+	@Override
+	public User getUserById(int idUser) {
 
-        System.out.println("updatedUser=" + updatedUser);
-        return updatedUser;
-    }
+		UserDAO userDAO = new UserDAOImpl();
+		User user = userDAO.getUserById(idUser);
+		return user;
+	}
 
-    @Override
-    public boolean deleteUserById(int idUser) {
-        UserDAO userDAO = new UserDAOImpl();
-        boolean result = userDAO.deleteUserById(idUser);
+	@Override
+	public User updateUser(int idUser, User newUser) {
 
-        System.out.println("deleteUserById=" + result);
-        return result;
-    }
+		UserDAO userDAO = new UserDAOImpl();
+		User updatedUser = userDAO.updateUser(idUser, newUser);
 
-    @Override
-    public User isRegistered(String login, String password) {
-        User registeredUser = null;
+		System.out.println("updatedUser=" + updatedUser);
+		return updatedUser;
+	}
 
-        UserDAO userDAO = new UserDAOImpl();
-        List<User> allUsersList = new ArrayList<>();
-        allUsersList = userDAO.getAllUsers();
+	@Override
+	public boolean deleteUserById(int idUser) {
 
-        for (User user : allUsersList) {
-            if (user.getLogin().equals(login) && user.getPassword().equals(password)) {
-                registeredUser = user;
-                break;
-            }
-        }
-        return registeredUser;
-    }
+		UserDAO userDAO = new UserDAOImpl();
+		boolean result = userDAO.deleteUserById(idUser);
 
-    @Override
-    public boolean addUser(User user) {
-        UserDAO userDAO = new UserDAOImpl();
-        boolean result = userDAO.addUser(user);
-        return result;
-    }
+		System.out.println("deleteUserById=" + result);
+		return result;
+	}
+
+	@Override
+	public User isRegistered(String login, String password) {
+
+		User registeredUser = null;
+
+		UserDAO userDAO = new UserDAOImpl();
+		List<User> allUsersList = new ArrayList<>();
+		allUsersList = userDAO.getAllUsers();
+
+		for (User user : allUsersList) {
+			if (user.getLogin().equals(login) && user.getPassword().equals(password)) {
+				registeredUser = user;
+				break;
+			}
+		}
+		return registeredUser;
+	}
+
+	@Override
+	public boolean addUser(User user) {
+
+		UserDAO userDAO = new UserDAOImpl();
+		boolean result = userDAO.addUser(user);
+		return result;
+	}
 }

@@ -57,6 +57,5 @@ public class AddUserServlet extends HttpServlet {
 		}
 		
 		doGet(request, response);
-
 	}
 }

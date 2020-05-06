@@ -8,18 +8,19 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebServlet(urlPatterns = {"/logout"})
+@WebServlet(urlPatterns = { "/logout" })
 public class LogoutServlet extends HttpServlet {
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
-        request.setCharacterEncoding("UTF-8");
-        response.setCharacterEncoding("UTF-8");
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
 
-        HttpSession session = request.getSession();
-        session.removeAttribute("registeredUser");
-        request.getSession().invalidate();
+		HttpSession session = request.getSession();
+		session.removeAttribute("registeredUser");
+		request.getSession().invalidate();
 
-        response.sendRedirect("/aviacompany_project/login");
-    }
+		response.sendRedirect("/aviacompany_project/login");
+	}
 }

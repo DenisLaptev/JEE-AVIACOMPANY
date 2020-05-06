@@ -13,7 +13,6 @@ import main.java.model.Personal;
 
 class TestPersonalDAO {
 
-
 	PersonalDAO personalDao = new PersonalDAOImpl();
 
 	private static final int ID_PERSONAL_FOR_TEST = -2;
@@ -25,6 +24,7 @@ class TestPersonalDAO {
 	private static final int ID_ST2_FOR_TEST = -2;
 	private static final int ID_ST3_FOR_TEST = -2;
 	private static final int ID_ORDER_FOR_TEST = -2;
+	
 	@Test
 	void addPersonalTest() {
 		
@@ -61,7 +61,6 @@ class TestPersonalDAO {
 		System.out.println("personalToAdd="+personalToAdd);
 		System.out.println("lastPersonalFromBD="+lastPersonalFromBD);
 		
-		
 		assertEquals(numberOfPersonalsModified,numberOfPersonals+1);
 		
 		assertEquals(personalToAdd.getIdPilot1(),lastPersonalFromBD.getIdPilot1());
@@ -71,37 +70,5 @@ class TestPersonalDAO {
 		assertEquals(personalToAdd.getIdSt1(),lastPersonalFromBD.getIdSt1());
 		assertEquals(personalToAdd.getIdSt2(),lastPersonalFromBD.getIdSt2());
 		assertEquals(personalToAdd.getIdSt3(),lastPersonalFromBD.getIdSt3());
-		
 	}
-
-//	@Test
-//	Flight getFlightById(int idFlight);
-//
-//	@Test
-//	Flight getFlightByName(String name);
-//
-//	@Test
-//	Flight getFlightByFrom(String from);
-//
-//	@Test
-//	Flight getFlightByTo(String to);
-//
-//	@Test
-//	Flight getFlightByDate(String date);
-//
-//	@Test
-//	List<Flight> getFlightByFromByToByDate(String from, String to, String date);
-//
-//	@Test
-//	List<Flight> getAllFlights();
-//
-//	@Test
-//	List<Flight> getFreeFlightByOrderStatus(String orderStatus);
-//
-//	@Test
-//	Flight updateFlight(int idFlight, Flight newFlight);
-//
-//	@Test
-//	boolean deleteFlightById(int idFlight);
-
 }

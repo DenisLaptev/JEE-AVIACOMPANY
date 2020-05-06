@@ -48,7 +48,6 @@ public class UpdateFlightByIdServlet extends HttpServlet {
 		Flight updatedFlight = new Flight(idFlight, name, flightFrom, flightTo, date, orderStatus, idOrder);
 		FlightService flightService = new FlightServiceImpl();
 		flightService.updateFlight(idFlight, updatedFlight);
-		// request.setAttribute("flightName", name);
 
 		response.sendRedirect("/aviacompany_project/flights");
 	}

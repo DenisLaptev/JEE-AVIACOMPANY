@@ -7,7 +7,8 @@
 
 <html>
 <head>
-<title><fmt:message key="views.personals.selectFreePersonal_jsp.title.Free_Personal" /></title>
+<title><fmt:message
+		key="views.personals.selectFreePersonal_jsp.title.Free_Personal" /></title>
 <style>
 body {
 	background-image: url("images/air2.jpg");
@@ -19,10 +20,9 @@ body {
 </style>
 </head>
 <body>
-<fmt:setBundle basename="resources" />
+	<fmt:setBundle basename="resources" />
 
 	<div align="center">
-
 
 		<%
 			//String orderStatus = (String) request.getAttribute("orderStatus");
@@ -33,13 +33,13 @@ body {
 			out.println("<h1>All Free Flights</h1>");
 		%>
 
-
 		<br>
-
 
 		<div>
 			<button onclick="location.href='/aviacompany_project/my-account'">
-				<fmt:message key="views.personals.selectFreePersonal_jsp.button.Back_to_main_page" /></button>
+				<fmt:message
+					key="views.personals.selectFreePersonal_jsp.button.Back_to_main_page" />
+			</button>
 
 		</div>
 		<br> <br>

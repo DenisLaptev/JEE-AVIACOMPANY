@@ -6,7 +6,8 @@
 
 <html>
 <head>
-<title><fmt:message key="views.personals.updatePersonal_jsp.title.Update_personal" /></title>
+<title><fmt:message
+		key="views.personals.updatePersonal_jsp.title.Update_personal" /></title>
 <style>
 body {
 	background-image: url("images/air2.jpg");
@@ -19,10 +20,12 @@ body {
 </head>
 
 <body>
-<fmt:setBundle basename="resources" />
+	<fmt:setBundle basename="resources" />
 	<div align="center" style="padding-top: 20%">
-		<h1><fmt:message key="views.personals.updatePersonal_jsp.h1.Updating_Personal" /></h1>
-
+		<h1>
+			<fmt:message
+				key="views.personals.updatePersonal_jsp.h1.Updating_Personal" />
+		</h1>
 
 		<div>
 			<%
@@ -111,7 +114,10 @@ body {
 				</form>
 			</div>
 		</div>
-		<button onclick="location.href='/aviacompany_project/personals'"><fmt:message key="views.personals.updatePersonal_jsp.button.All_Personals_Table" /></button>
+		<button onclick="location.href='/aviacompany_project/personals'">
+			<fmt:message
+				key="views.personals.updatePersonal_jsp.button.All_Personals_Table" />
+		</button>
 	</div>
 </body>
 </html>

@@ -51,12 +51,12 @@ public class AddPersonalServlet extends HttpServlet {
         int idSt2 = Integer.parseInt(request.getParameter("idSt2"));
         int idSt3 = Integer.parseInt(request.getParameter("idSt3"));
         int idOrder = Integer.parseInt(request.getParameter("idOrder"));
+        
         Personal newPersonal = new Personal(idPersonal, idPilot1, idPilot2, idShturman, idRadist, idSt1, idSt2, idSt3, idOrder);
         PersonalService personalService = new PersonalServiceImpl();
         personalService.updatePersonal(idPersonal, newPersonal);
 
         request.setAttribute("isAdded", true);
-        //doGet(request, response);
 
         response.sendRedirect("/aviacompany_project/personals");
 

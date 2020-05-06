@@ -13,208 +13,212 @@ import main.java.database.DBHelper;
 
 public class UserDAOImpl implements UserDAO {
 
-    @Override
-    public boolean addUser(User user) {
-        boolean result = true;
+	@Override
+	public boolean addUser(User user) {
 
-        DBHelper objectDBHelper = new DBHelper();
-        Connection connection = objectDBHelper.getConnection();
+		boolean result = true;
 
-        PreparedStatement ps = null;
-        try {
+		DBHelper objectDBHelper = new DBHelper();
+		Connection connection = objectDBHelper.getConnection();
 
-            String firstName = user.getFirstName();
-            String lastName = user.getLastName();
-            String login = user.getLogin();
-            String password = user.getPassword();
-            String role = user.getRole();
+		PreparedStatement ps = null;
+		try {
 
-            String query = "INSERT INTO aviacompany_db.users(firstName, lastName, login, password, role) VALUES (?,?,?,?,?)";
+			String firstName = user.getFirstName();
+			String lastName = user.getLastName();
+			String login = user.getLogin();
+			String password = user.getPassword();
+			String role = user.getRole();
 
-            ps = connection.prepareStatement(query);
+			String query = "INSERT INTO aviacompany_db.users(firstName, lastName, login, password, role) VALUES (?,?,?,?,?)";
 
-            ps.setString(1, firstName);
-            ps.setString(2, lastName);
-            ps.setString(3, login);
-            ps.setString(4, password);
-            ps.setString(5, role);
+			ps = connection.prepareStatement(query);
 
-            // System.out.println(ps);
-            ps.executeUpdate();
+			ps.setString(1, firstName);
+			ps.setString(2, lastName);
+			ps.setString(3, login);
+			ps.setString(4, password);
+			ps.setString(5, role);
 
-        } catch (Exception e) {
-            System.out.println(e);
-            result = false;
-        } finally {
-            if (connection != null) {
-                try {
-                    connection.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
+			// System.out.println(ps);
+			ps.executeUpdate();
 
-        return result;
-    }
+		} catch (Exception e) {
+			System.out.println(e);
+			result = false;
+		} finally {
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
 
-    @Override
-    public User getUserById(int idUser) {
-        User user = null;
+		return result;
+	}
 
-        DBHelper objectDBHelper = new DBHelper();
-        Connection connection = objectDBHelper.getConnection();
+	@Override
+	public User getUserById(int idUser) {
 
-        PreparedStatement ps = null;
-        ResultSet rs = null;
-        try {
+		User user = null;
 
-            String query = "SELECT * FROM users WHERE idUser = ?";
-            ps = connection.prepareStatement(query);
+		DBHelper objectDBHelper = new DBHelper();
+		Connection connection = objectDBHelper.getConnection();
 
-            ps.setString(1, String.valueOf(idUser));
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		try {
 
-            rs = ps.executeQuery();
+			String query = "SELECT * FROM users WHERE idUser = ?";
+			ps = connection.prepareStatement(query);
 
-            while (rs.next()) {
+			ps.setString(1, String.valueOf(idUser));
 
-                // int idFlight = rs.getInt("idFlight");
-                String firstName = rs.getString("firstName");
-                String lastName = rs.getString("lastName");
-                String login = rs.getString("login");
-                String password = rs.getString("password");
-                String role = rs.getString("role");
+			rs = ps.executeQuery();
 
-                user = new User(idUser, firstName, lastName, login, password, role);
-            }
+			while (rs.next()) {
 
-        } catch (Exception e) {
-            System.out.println(e);
-        } finally {
-            if (connection != null) {
-                try {
-                    connection.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        return user;
-    }
+				// int idFlight = rs.getInt("idFlight");
+				String firstName = rs.getString("firstName");
+				String lastName = rs.getString("lastName");
+				String login = rs.getString("login");
+				String password = rs.getString("password");
+				String role = rs.getString("role");
 
-    @Override
-    public List<User> getAllUsers() {
-        List<User> users = new ArrayList<>();
+				user = new User(idUser, firstName, lastName, login, password, role);
+			}
 
-        DBHelper objectDBHelper = new DBHelper();
-        Connection connection = objectDBHelper.getConnection();
+		} catch (Exception e) {
+			System.out.println(e);
+		} finally {
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return user;
+	}
 
-        PreparedStatement ps = null;
-        ResultSet rs = null;
-        try {
+	@Override
+	public List<User> getAllUsers() {
 
-            String query = "SELECT * FROM users";
-            ps = connection.prepareStatement(query);
+		List<User> users = new ArrayList<>();
 
-            rs = ps.executeQuery();
+		DBHelper objectDBHelper = new DBHelper();
+		Connection connection = objectDBHelper.getConnection();
 
-            while (rs.next()) {
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		try {
 
-                int idUser = rs.getInt("idUser");
-                String firstName = rs.getString("firstName");
-                String lastName = rs.getString("lastName");
-                String login = rs.getString("login");
-                String password = rs.getString("password");
-                String role = rs.getString("role");
+			String query = "SELECT * FROM users";
+			ps = connection.prepareStatement(query);
 
-                User user = new User(idUser, firstName, lastName, login, password, role);
-                users.add(user);
-            }
+			rs = ps.executeQuery();
 
-        } catch (Exception e) {
-            System.out.println(e);
-        } finally {
-            if (connection != null) {
-                try {
-                    connection.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        return users;
-    }
+			while (rs.next()) {
 
-    @Override
-    public User updateUser(int idUser, User newUser) {
+				int idUser = rs.getInt("idUser");
+				String firstName = rs.getString("firstName");
+				String lastName = rs.getString("lastName");
+				String login = rs.getString("login");
+				String password = rs.getString("password");
+				String role = rs.getString("role");
 
-        DBHelper objectDBHelper = new DBHelper();
-        Connection connection = objectDBHelper.getConnection();
+				User user = new User(idUser, firstName, lastName, login, password, role);
+				users.add(user);
+			}
 
-        PreparedStatement ps = null;
-        try {
+		} catch (Exception e) {
+			System.out.println(e);
+		} finally {
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return users;
+	}
 
-            String newFirstName = newUser.getFirstName();
-            String newLastName = newUser.getLastName();
-            String newLogin = newUser.getLogin();
-            String newPassword = newUser.getPassword();
-            String newRole = newUser.getRole();
+	@Override
+	public User updateUser(int idUser, User newUser) {
 
-            String query = "UPDATE users SET firstName = '" + newFirstName + "', lastName = '" + newLastName
-                    + "', login = '" + newLogin + "', password = '" + newPassword + "', role = '" + newRole
-                    + "' WHERE idUser = ?";
+		DBHelper objectDBHelper = new DBHelper();
+		Connection connection = objectDBHelper.getConnection();
 
-            ps = connection.prepareStatement(query);
+		PreparedStatement ps = null;
+		try {
 
-            ps.setInt(1, idUser);
+			String newFirstName = newUser.getFirstName();
+			String newLastName = newUser.getLastName();
+			String newLogin = newUser.getLogin();
+			String newPassword = newUser.getPassword();
+			String newRole = newUser.getRole();
 
-            // System.out.println(ps);
-            ps.executeUpdate();
+			String query = "UPDATE users SET firstName = '" + newFirstName + "', lastName = '" + newLastName
+					+ "', login = '" + newLogin + "', password = '" + newPassword + "', role = '" + newRole
+					+ "' WHERE idUser = ?";
 
-        } catch (Exception e) {
-            System.out.println(e);
-        } finally {
-            if (connection != null) {
-                try {
-                    connection.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
+			ps = connection.prepareStatement(query);
 
-        return newUser;
-    }
+			ps.setInt(1, idUser);
 
-    @Override
-    public boolean deleteUserById(int idUser) {
-        boolean result = true;
+			// System.out.println(ps);
+			ps.executeUpdate();
 
-        DBHelper objectDBHelper = new DBHelper();
-        Connection connection = objectDBHelper.getConnection();
+		} catch (Exception e) {
+			System.out.println(e);
+		} finally {
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
 
-        PreparedStatement ps = null;
-        try {
-            String query = "DELETE FROM users WHERE idUser = ?";
-            ps = connection.prepareStatement(query);
-            ps.setInt(1, idUser);
+		return newUser;
+	}
 
-            // System.out.println(ps);
-            ps.executeUpdate();
+	@Override
+	public boolean deleteUserById(int idUser) {
 
-            // connection.close();
-        } catch (Exception e) {
-            System.out.println(e);
-            result = false;
-        } finally {
-            if (connection != null) {
-                try {
-                    connection.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        return result;
-    }
+		boolean result = true;
+
+		DBHelper objectDBHelper = new DBHelper();
+		Connection connection = objectDBHelper.getConnection();
+
+		PreparedStatement ps = null;
+		try {
+			String query = "DELETE FROM users WHERE idUser = ?";
+			ps = connection.prepareStatement(query);
+			ps.setInt(1, idUser);
+
+			// System.out.println(ps);
+			ps.executeUpdate();
+
+			// connection.close();
+		} catch (Exception e) {
+			System.out.println(e);
+			result = false;
+		} finally {
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return result;
+	}
 }

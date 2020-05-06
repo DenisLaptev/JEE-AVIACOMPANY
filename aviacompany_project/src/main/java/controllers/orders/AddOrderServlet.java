@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(urlPatterns = {"/add-order"})
+@WebServlet(urlPatterns = { "/add-order" })
 public class AddOrderServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -24,15 +24,14 @@ public class AddOrderServlet extends HttpServlet {
 
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
-		
-		 OrderService orderService = new OrderServiceImpl();
-		 Order orderForCreation = new Order(-1, -1, -1,"free");
-		 orderService.addOrder(orderForCreation);
+
+		OrderService orderService = new OrderServiceImpl();
+		Order orderForCreation = new Order(-1, -1, -1, "free");
+		orderService.addOrder(orderForCreation);
 
 		List<Order> ordersList = orderService.getAllOrders();
 		int idOrder = ordersList.get(ordersList.size() - 1).getIdOrder();
 		request.setAttribute("idOrder", idOrder);
-
 
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher("views/orders/addOrder.jsp");
 		requestDispatcher.forward(request, response);
@@ -56,8 +55,8 @@ public class AddOrderServlet extends HttpServlet {
 
 		request.setAttribute("idFlight", idFlight);
 		request.setAttribute("idPersonal", idPersonal);
+		
 		doGet(request, response);
 	}
-
 
 }

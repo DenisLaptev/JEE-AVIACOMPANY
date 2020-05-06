@@ -49,6 +49,7 @@ public class InitDatabase {
 	public static final String[] USER_ROLES = new String[] { "user", "dispatcher", "admin" };
 
 	public static String[] generateLoginsArray(int numberOfElements) {
+
 		String[] loginsArray = new String[numberOfElements];
 		for (int i = 0; i < numberOfElements; i++) {
 			loginsArray[i] = "login" + i;
@@ -57,6 +58,7 @@ public class InitDatabase {
 	}
 
 	public static String[] generatePasswordsArray(int numberOfElements) {
+
 		String[] passwordsArray = new String[numberOfElements];
 		for (int i = 0; i < numberOfElements; i++) {
 			passwordsArray[i] = "password" + i;
@@ -65,6 +67,7 @@ public class InitDatabase {
 	}
 
 	public static List<Flight> generateFlightsList() {
+
 		Random random = new Random();
 		List<Flight> flightList = new ArrayList<>();
 		for (int i = 0; i < NUMBER_OF_ROWS; i++) {
@@ -81,6 +84,7 @@ public class InitDatabase {
 	}
 
 	public static List<Person> generatePersonsList() {
+
 		Random random = new Random();
 		List<Person> personList = new ArrayList<>();
 		for (int i = 0; i < NUMBER_OF_ROWS; i++) {
@@ -97,6 +101,7 @@ public class InitDatabase {
 	}
 
 	public static List<User> generateUsersList() {
+
 		Random random = new Random();
 		List<User> userList = new ArrayList<>();
 		for (int i = 0; i < NUMBER_OF_ROWS; i++) {
@@ -114,6 +119,7 @@ public class InitDatabase {
 	}
 
 	public static void addFlightsListToDB(List<Flight> flightList) {
+
 		FlightDAO flightDAO = new FlightDAOImpl();
 		for (Flight flight : flightList) {
 			flightDAO.addFlight(flight);
@@ -121,6 +127,7 @@ public class InitDatabase {
 	}
 
 	public static void addPersonsListToDB(List<Person> personList) {
+
 		PersonDAO personDAO = new PersonDAOImpl();
 		for (Person person : personList) {
 			personDAO.addPerson(person);
@@ -128,6 +135,7 @@ public class InitDatabase {
 	}
 
 	public static void addUsersListToDB(List<User> userList) {
+
 		UserDAO userDAO = new UserDAOImpl();
 		for (User user : userList) {
 			userDAO.addUser(user);
@@ -135,6 +143,7 @@ public class InitDatabase {
 	}
 
 	public static void main(String[] args) {
+
 		List<Flight> flightList = generateFlightsList();
 		addFlightsListToDB(flightList);
 

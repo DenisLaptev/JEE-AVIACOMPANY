@@ -8,7 +8,8 @@
 
 <html>
 <head>
-<title><fmt:message key="views.personals.allPersonals_jsp.title.All_Personals" /></title>
+<title><fmt:message
+		key="views.personals.allPersonals_jsp.title.All_Personals" /></title>
 <style>
 body {
 	background-image: url("images/air2.jpg");
@@ -20,17 +21,18 @@ body {
 </style>
 </head>
 <body>
-<fmt:setBundle basename="resources" />
+	<fmt:setBundle basename="resources" />
 	<div align="center">
-		<h1><fmt:message key="views.personals.allPersonals_jsp.h1.All_All_Personals_Table" /></h1>
+		<h1>
+			<fmt:message
+				key="views.personals.allPersonals_jsp.h1.All_All_Personals_Table" />
+		</h1>
 
 		<br>
 		<%
 			User registeredUser = (User) session.getAttribute("registeredUser");
 			if (registeredUser != null) {
 				out.println("~~~~~");
-				//out.println(registeredUser);
-				//out.println("UserId=" + registeredUser.getIdUser() + " role= " + registeredUser.getRole());
 				if (registeredUser.getRole().equals("user")) {
 					out.println("You are simple user");
 				} else if (registeredUser.getRole().equals("dispatcher")) {
@@ -49,11 +51,17 @@ body {
 			<%
 				if (registeredUser != null && registeredUser.getRole().equals("dispatcher")) {
 			%>
-			<button onclick="location.href='/aviacompany_project/add-personal'"><fmt:message key="views.personals.allPersonals_jsp.button.Add_Personal" /></button>
+			<button onclick="location.href='/aviacompany_project/add-personal'">
+				<fmt:message
+					key="views.personals.allPersonals_jsp.button.Add_Personal" />
+			</button>
 			<%
 				}
 			%>
-			<button onclick="location.href='/aviacompany_project/my-account'"><fmt:message key="views.personals.allPersonals_jsp.button.Back_to_main_page" /></button>
+			<button onclick="location.href='/aviacompany_project/my-account'">
+				<fmt:message
+					key="views.personals.allPersonals_jsp.button.Back_to_main_page" />
+			</button>
 		</div>
 		<br> <br>
 		<div>
@@ -149,9 +157,10 @@ body {
 			<%
 				}
 			%>
-		
-			
-			<button onclick="location.href='/aviacompany_project/my-account'"><fmt:message key="views.personals.allPersonals_jsp.button.Back_to_main_page" /></button>
+			<button onclick="location.href='/aviacompany_project/my-account'">
+				<fmt:message
+					key="views.personals.allPersonals_jsp.button.Back_to_main_page" />
+			</button>
 		</div>
 	</div>
 </body>

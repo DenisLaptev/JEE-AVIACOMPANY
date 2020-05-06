@@ -5,9 +5,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page isELIgnored="false"%>
+
 <html>
 <head>
-<title><fmt:message key="views.flights.allFlights_jsp.title.All_Flights" /></title>
+<title><fmt:message
+		key="views.flights.allFlights_jsp.title.All_Flights" /></title>
 <style>
 body {
 	background-image: url("images/air2.jpg");
@@ -19,7 +21,7 @@ body {
 </style>
 </head>
 <body>
-<fmt:setBundle basename="resources" />
+	<fmt:setBundle basename="resources" />
 	<div align="center">
 		<h1>All Flights Table</h1>
 
@@ -29,8 +31,6 @@ body {
 			User registeredUser = (User) session.getAttribute("registeredUser");
 			if (registeredUser != null) {
 				out.println("~~~~~");
-				//out.println(registeredUser);
-				//out.println("UserId=" + registeredUser.getIdUser() + " role= " + registeredUser.getRole());
 				if (registeredUser.getRole().equals("user")) {
 					out.println("You are simple user");
 				} else if (registeredUser.getRole().equals("dispatcher")) {
@@ -49,34 +49,37 @@ body {
 
 		<div>
 			<button onclick="location.href='/aviacompany_project/flight-by-id'">
-			<fmt:message key="views.flights.allFlights_jsp.button.Select_Flight_by_Number" />
+				<fmt:message
+					key="views.flights.allFlights_jsp.button.Select_Flight_by_Number" />
 			</button>
 
 			<button
 				onclick="location.href='/aviacompany_project/flight-by-from-to-date'">
-				<fmt:message key="views.flights.allFlights_jsp.button.Select_Flight_by_Parameters" />
-				</button>
+				<fmt:message
+					key="views.flights.allFlights_jsp.button.Select_Flight_by_Parameters" />
+			</button>
 
 			<button
 				onclick="location.href='/aviacompany_project/sort-flights-id'">
 				<fmt:message key="views.flights.allFlights_jsp.button.Sort_By_Id" />
-				</button>
+			</button>
 
 			<button
 				onclick="location.href='/aviacompany_project/sort-flights-name'">
 				<fmt:message key="views.flights.allFlights_jsp.button.Sort_By_Name" />
-				</button>
+			</button>
 
 			<button onclick="location.href='/aviacompany_project/my-account'">
-			<fmt:message key="views.flights.allFlights_jsp.button.Back_to_main_page" />
-				</button>
+				<fmt:message
+					key="views.flights.allFlights_jsp.button.Back_to_main_page" />
+			</button>
 
 			<%
 				if (registeredUser != null && registeredUser.getRole().equals("admin")) {
 			%>
 			<button onclick="location.href='/aviacompany_project/add-flight'">
-			<fmt:message key="views.flights.allFlights_jsp.button.Add_Flight" />
-				</button>
+				<fmt:message key="views.flights.allFlights_jsp.button.Add_Flight" />
+			</button>
 			<%
 				}
 			%>
@@ -163,34 +166,37 @@ body {
 
 		<div>
 			<button onclick="location.href='/aviacompany_project/flight-by-id'">
-			<fmt:message key="views.flights.allFlights_jsp.button.Select_Flight_by_Number" />
+				<fmt:message
+					key="views.flights.allFlights_jsp.button.Select_Flight_by_Number" />
 			</button>
 
 			<button
 				onclick="location.href='/aviacompany_project/flight-by-from-to-date'">
-				<fmt:message key="views.flights.allFlights_jsp.button.Select_Flight_by_Parameters" />
-				</button>
+				<fmt:message
+					key="views.flights.allFlights_jsp.button.Select_Flight_by_Parameters" />
+			</button>
 
 			<button
 				onclick="location.href='/aviacompany_project/sort-flights-id'">
 				<fmt:message key="views.flights.allFlights_jsp.button.Sort_By_Id" />
-				</button>
+			</button>
 
 			<button
 				onclick="location.href='/aviacompany_project/sort-flights-name'">
 				<fmt:message key="views.flights.allFlights_jsp.button.Sort_By_Name" />
-				</button>
+			</button>
 
 			<button onclick="location.href='/aviacompany_project/my-account'">
-			<fmt:message key="views.flights.allFlights_jsp.button.Back_to_main_page" />
-				</button>
+				<fmt:message
+					key="views.flights.allFlights_jsp.button.Back_to_main_page" />
+			</button>
 
 			<%
 				if (registeredUser != null && registeredUser.getRole().equals("admin")) {
 			%>
 			<button onclick="location.href='/aviacompany_project/add-flight'">
-			<fmt:message key="views.flights.allFlights_jsp.button.Add_Flight" />
-				</button>
+				<fmt:message key="views.flights.allFlights_jsp.button.Add_Flight" />
+			</button>
 			<%
 				}
 			%>

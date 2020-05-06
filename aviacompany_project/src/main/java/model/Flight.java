@@ -10,8 +10,6 @@ public class Flight {
     private String orderStatus;
     private int idOrder;
 
-    
-
 	public Flight() {
     }
 
@@ -152,5 +150,4 @@ public class Flight {
 				+ flightTo + ", date=" + date + ", orderStatus=" + orderStatus + ", idOrder=" + idOrder + "]";
 	}
 
-   
 }

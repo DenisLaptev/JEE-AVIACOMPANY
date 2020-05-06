@@ -3,8 +3,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page isELIgnored="false"%>
 
-<fmt:message key="views.loginResult_jsp.button.next" />
-
 <html>
 <head>
 <title><fmt:message key="views.orders.addOrder_jsp.title.Add_new_order" /></title>
@@ -24,9 +22,7 @@ body {
 	<div align="center" style="padding-top: 20%">
 		<h1><fmt:message key="views.orders.addOrder_jsp.h1.Adding_New_Order" /></h1>
 
-
 		<div>
-
 			<%
 				int idOrder = (int) request.getAttribute("idOrder");
 				out.println("<p>idOrder=" + idOrder + "</p>");
@@ -42,13 +38,8 @@ body {
 				}
 			%>
 
-
-
 			<div>
-
 				<table>
-
-
 					<tr>
 						<td>IdFlight:</td>
 
@@ -63,7 +54,6 @@ body {
 
 						</td>
 					</tr>
-
 					<tr>
 						<td>IdPersonal:</td>
 
@@ -78,7 +68,6 @@ body {
 
 						</td>
 					</tr>
-
 				</table>
 			</div>
 		</div>

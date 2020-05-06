@@ -13,245 +13,246 @@ import main.java.database.DBHelper;
 
 public class PersonDAOImpl implements PersonDAO {
 
-    @Override
-    public boolean addPerson(Person person) {
+	@Override
+	public boolean addPerson(Person person) {
 
-        boolean result = true;
+		boolean result = true;
 
-        DBHelper objectDBHelper = new DBHelper();
-        Connection connection = objectDBHelper.getConnection();
+		DBHelper objectDBHelper = new DBHelper();
+		Connection connection = objectDBHelper.getConnection();
 
-        PreparedStatement ps = null;
-        try {
+		PreparedStatement ps = null;
+		try {
 
-            int idPersonal = person.getIdPersonal();
-            String firstName = person.getFirstName();
-            String lastName = person.getLastName();
-            String profession = person.getProfession();
+			int idPersonal = person.getIdPersonal();
+			String firstName = person.getFirstName();
+			String lastName = person.getLastName();
+			String profession = person.getProfession();
 
-            String query = "INSERT INTO aviacompany_db.persons(idPersonal, firstName, lastName, profession) VALUES (?,?,?,?)";
+			String query = "INSERT INTO aviacompany_db.persons(idPersonal, firstName, lastName, profession) VALUES (?,?,?,?)";
 
-            ps = connection.prepareStatement(query);
+			ps = connection.prepareStatement(query);
 
-            ps.setInt(1, idPersonal);
-            ps.setString(2, firstName);
-            ps.setString(3, lastName);
-            ps.setString(4, profession);
+			ps.setInt(1, idPersonal);
+			ps.setString(2, firstName);
+			ps.setString(3, lastName);
+			ps.setString(4, profession);
 
-            // System.out.println(ps);
-            ps.executeUpdate();
+			// System.out.println(ps);
+			ps.executeUpdate();
 
-        } catch (Exception e) {
-            System.out.println(e);
-            result = false;
-        } finally {
-            if (connection != null) {
-                try {
-                    connection.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
+		} catch (Exception e) {
+			System.out.println(e);
+			result = false;
+		} finally {
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
 
-        return result;
-    }
+		return result;
+	}
 
-    @Override
-    public Person getPersonById(int idPerson) {
-        Person person = null;
+	@Override
+	public Person getPersonById(int idPerson) {
 
-        DBHelper objectDBHelper = new DBHelper();
-        Connection connection = objectDBHelper.getConnection();
+		Person person = null;
 
-        PreparedStatement ps = null;
-        ResultSet rs = null;
-        try {
+		DBHelper objectDBHelper = new DBHelper();
+		Connection connection = objectDBHelper.getConnection();
 
-            String query = "SELECT * FROM persons WHERE idPerson = ?";
-            ps = connection.prepareStatement(query);
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		try {
 
-            ps.setString(1, String.valueOf(idPerson));
+			String query = "SELECT * FROM persons WHERE idPerson = ?";
+			ps = connection.prepareStatement(query);
 
-            rs = ps.executeQuery();
+			ps.setString(1, String.valueOf(idPerson));
 
-            while (rs.next()) {
+			rs = ps.executeQuery();
 
-                // int idFlight = rs.getInt("idFlight");
-                int idPersonal = rs.getInt("idPersonal");
-                String firstName = rs.getString("firstName");
-                String lastName = rs.getString("lastName");
-                String profession = rs.getString("profession");
+			while (rs.next()) {
 
-                person = new Person(idPerson, idPersonal, firstName, lastName, profession);
-            }
+				// int idFlight = rs.getInt("idFlight");
+				int idPersonal = rs.getInt("idPersonal");
+				String firstName = rs.getString("firstName");
+				String lastName = rs.getString("lastName");
+				String profession = rs.getString("profession");
 
-        } catch (Exception e) {
-            System.out.println(e);
-        } finally {
-            if (connection != null) {
-                try {
-                    connection.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        return person;
-    }
+				person = new Person(idPerson, idPersonal, firstName, lastName, profession);
+			}
 
-    @Override
-    public List<Person> getAllPersons() {
-        List<Person> persons = new ArrayList<>();
+		} catch (Exception e) {
+			System.out.println(e);
+		} finally {
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return person;
+	}
 
-        DBHelper objectDBHelper = new DBHelper();
-        Connection connection = objectDBHelper.getConnection();
+	@Override
+	public List<Person> getAllPersons() {
+		List<Person> persons = new ArrayList<>();
 
-        PreparedStatement ps = null;
-        ResultSet rs = null;
-        try {
+		DBHelper objectDBHelper = new DBHelper();
+		Connection connection = objectDBHelper.getConnection();
 
-            String query = "SELECT * FROM persons";
-            ps = connection.prepareStatement(query);
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		try {
 
-            rs = ps.executeQuery();
+			String query = "SELECT * FROM persons";
+			ps = connection.prepareStatement(query);
 
-            while (rs.next()) {
+			rs = ps.executeQuery();
 
-                int idPerson = rs.getInt("idPerson");
-                int idPersonal = rs.getInt("idPersonal");
-                String firstName = rs.getString("firstName");
-                String lastName = rs.getString("lastName");
-                String profession = rs.getString("profession");
+			while (rs.next()) {
 
-                Person person = new Person(idPerson, idPersonal, firstName, lastName, profession);
-                persons.add(person);
-            }
+				int idPerson = rs.getInt("idPerson");
+				int idPersonal = rs.getInt("idPersonal");
+				String firstName = rs.getString("firstName");
+				String lastName = rs.getString("lastName");
+				String profession = rs.getString("profession");
 
-        } catch (Exception e) {
-            System.out.println(e);
-        } finally {
-            if (connection != null) {
-                try {
-                    connection.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        return persons;
-    }
+				Person person = new Person(idPerson, idPersonal, firstName, lastName, profession);
+				persons.add(person);
+			}
 
-    @Override
-    public List<Person> getAllPersonsByProfession(String profession) {
+		} catch (Exception e) {
+			System.out.println(e);
+		} finally {
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return persons;
+	}
 
-        List<Person> persons = new ArrayList<>();
+	@Override
+	public List<Person> getAllPersonsByProfession(String profession) {
 
-        DBHelper objectDBHelper = new DBHelper();
-        Connection connection = objectDBHelper.getConnection();
+		List<Person> persons = new ArrayList<>();
 
-        PreparedStatement ps = null;
-        ResultSet rs = null;
-        try {
-            String query = "SELECT * FROM persons WHERE idPersonal=-1 AND profession = ?";
-            ps = connection.prepareStatement(query);
+		DBHelper objectDBHelper = new DBHelper();
+		Connection connection = objectDBHelper.getConnection();
 
-            ps.setString(1, profession);
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		try {
+			String query = "SELECT * FROM persons WHERE idPersonal=-1 AND profession = ?";
+			ps = connection.prepareStatement(query);
 
-            rs = ps.executeQuery();
+			ps.setString(1, profession);
 
-            while (rs.next()) {
-                int idPerson = rs.getInt("idPerson");
-                int idPersonal = rs.getInt("idPersonal");
-                String firstName = rs.getString("firstName");
-                String lastName = rs.getString("lastName");
+			rs = ps.executeQuery();
 
-                Person person = new Person(idPerson, idPersonal, firstName, lastName, profession);
-                persons.add(person);
-            }
+			while (rs.next()) {
+				int idPerson = rs.getInt("idPerson");
+				int idPersonal = rs.getInt("idPersonal");
+				String firstName = rs.getString("firstName");
+				String lastName = rs.getString("lastName");
 
-        } catch (Exception e) {
-            System.out.println(e);
-        } finally {
-            if (connection != null) {
-                try {
-                    connection.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        return persons;
-    }
+				Person person = new Person(idPerson, idPersonal, firstName, lastName, profession);
+				persons.add(person);
+			}
 
-    @Override
-    public Person updatePerson(int idPerson, Person newPerson) {
+		} catch (Exception e) {
+			System.out.println(e);
+		} finally {
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return persons;
+	}
 
-        DBHelper objectDBHelper = new DBHelper();
-        Connection connection = objectDBHelper.getConnection();
+	@Override
+	public Person updatePerson(int idPerson, Person newPerson) {
 
-        PreparedStatement ps = null;
-        try {
+		DBHelper objectDBHelper = new DBHelper();
+		Connection connection = objectDBHelper.getConnection();
 
-            int newIdPersonal = newPerson.getIdPersonal();
-            String newFirstName = newPerson.getFirstName();
-            String newLastName = newPerson.getLastName();
-            String newProfession = newPerson.getProfession();
+		PreparedStatement ps = null;
+		try {
 
-            String query = "UPDATE persons SET idPersonal = '" + newIdPersonal + "', firstName = '" + newFirstName
-                    + "', lastName = '" + newLastName + "', profession = '" + newProfession + "' WHERE idPerson = ?";
+			int newIdPersonal = newPerson.getIdPersonal();
+			String newFirstName = newPerson.getFirstName();
+			String newLastName = newPerson.getLastName();
+			String newProfession = newPerson.getProfession();
 
-            ps = connection.prepareStatement(query);
+			String query = "UPDATE persons SET idPersonal = '" + newIdPersonal + "', firstName = '" + newFirstName
+					+ "', lastName = '" + newLastName + "', profession = '" + newProfession + "' WHERE idPerson = ?";
 
-            ps.setInt(1, idPerson);
+			ps = connection.prepareStatement(query);
 
-            // System.out.println(ps);
-            ps.executeUpdate();
+			ps.setInt(1, idPerson);
 
-        } catch (Exception e) {
-            System.out.println(e);
-        } finally {
-            if (connection != null) {
-                try {
-                    connection.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
+			// System.out.println(ps);
+			ps.executeUpdate();
 
-        return newPerson;
-    }
+		} catch (Exception e) {
+			System.out.println(e);
+		} finally {
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
 
-    @Override
-    public boolean deletePersonById(int idPerson) {
-        boolean result = true;
+		return newPerson;
+	}
 
-        DBHelper objectDBHelper = new DBHelper();
-        Connection connection = objectDBHelper.getConnection();
+	@Override
+	public boolean deletePersonById(int idPerson) {
+		boolean result = true;
 
-        PreparedStatement ps = null;
-        try {
-            String query = "DELETE FROM persons WHERE idPerson = ?";
-            ps = connection.prepareStatement(query);
-            ps.setInt(1, idPerson);
+		DBHelper objectDBHelper = new DBHelper();
+		Connection connection = objectDBHelper.getConnection();
 
-            // System.out.println(ps);
-            ps.executeUpdate();
+		PreparedStatement ps = null;
+		try {
+			String query = "DELETE FROM persons WHERE idPerson = ?";
+			ps = connection.prepareStatement(query);
+			ps.setInt(1, idPerson);
 
-            // connection.close();
-        } catch (Exception e) {
-            System.out.println(e);
-            result = false;
-        } finally {
-            if (connection != null) {
-                try {
-                    connection.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        return result;
-    }
+			// System.out.println(ps);
+			ps.executeUpdate();
+
+			// connection.close();
+		} catch (Exception e) {
+			System.out.println(e);
+			result = false;
+		} finally {
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return result;
+	}
 }

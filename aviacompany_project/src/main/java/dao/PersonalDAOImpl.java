@@ -16,6 +16,7 @@ public class PersonalDAOImpl implements PersonalDAO {
 
 	@Override
 	public boolean addPersonal(Personal personal) {
+
 		boolean result = true;
 
 		DBHelper objectDBHelper = new DBHelper();
@@ -66,6 +67,7 @@ public class PersonalDAOImpl implements PersonalDAO {
 
 	@Override
 	public Personal getPersonalById(int idPersonal) {
+		
 		Personal personal = null;
 
 		DBHelper objectDBHelper = new DBHelper();
@@ -94,7 +96,8 @@ public class PersonalDAOImpl implements PersonalDAO {
 				int idSt3 = rs.getInt("idSt3");
 				int idOrder = rs.getInt("idOrder");
 
-				personal = new Personal(idPersonal, idPilot1, idPilot2, idShturman, idRadist, idSt1, idSt2, idSt3, idOrder);
+				personal = new Personal(idPersonal, idPilot1, idPilot2, idShturman, idRadist, idSt1, idSt2, idSt3,
+						idOrder);
 			}
 
 		} catch (Exception e) {
@@ -113,6 +116,7 @@ public class PersonalDAOImpl implements PersonalDAO {
 
 	@Override
 	public List<Personal> getAllPersonals() {
+		
 		List<Personal> personals = new ArrayList<>();
 
 		DBHelper objectDBHelper = new DBHelper();
@@ -138,7 +142,6 @@ public class PersonalDAOImpl implements PersonalDAO {
 				int idSt3 = rs.getInt("idSt3");
 				int idOrder = rs.getInt("idOrder");
 
-
 				Personal personal = new Personal(idPersonal, idPilot1, idPilot2, idShturman, idRadist, idSt1, idSt2,
 						idSt3, idOrder);
 				personals.add(personal);
@@ -160,6 +163,7 @@ public class PersonalDAOImpl implements PersonalDAO {
 
 	@Override
 	public Personal updatePersonal(int idPersonal, Personal newPersonal) {
+		
 		DBHelper objectDBHelper = new DBHelper();
 		Connection connection = objectDBHelper.getConnection();
 
@@ -205,6 +209,7 @@ public class PersonalDAOImpl implements PersonalDAO {
 
 	@Override
 	public boolean deletePersonalById(int idPersonal) {
+		
 		boolean result = true;
 
 		DBHelper objectDBHelper = new DBHelper();
@@ -223,7 +228,7 @@ public class PersonalDAOImpl implements PersonalDAO {
 		} catch (Exception e) {
 			System.out.println(e);
 			result = false;
-		}finally {
+		} finally {
 			if (connection != null) {
 				try {
 					connection.close();
@@ -237,11 +242,14 @@ public class PersonalDAOImpl implements PersonalDAO {
 
 	@Override
 	public void addPersonToPersonal(int idPerson, int idPersonal) {
+
 		System.out.println("PERSON ADDED!");
+
 	}
 
 	@Override
 	public List<Personal> getFreePersonalByIdOrder(int idOrder) {
+		
 		List<Personal> personals = new ArrayList<>();
 
 		DBHelper objectDBHelper = new DBHelper();
@@ -266,7 +274,7 @@ public class PersonalDAOImpl implements PersonalDAO {
 				int idSt1 = rs.getInt("idSt1");
 				int idSt2 = rs.getInt("idSt2");
 				int idSt3 = rs.getInt("idSt3");
-				//int idOrder = rs.getInt("idOrder");
+				// int idOrder = rs.getInt("idOrder");
 
 				Personal personal = new Personal(idPersonal, idPilot1, idPilot2, idShturman, idRadist, idSt1, idSt2,
 						idSt3, idOrder);

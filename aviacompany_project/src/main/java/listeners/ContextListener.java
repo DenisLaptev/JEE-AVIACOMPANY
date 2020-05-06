@@ -15,7 +15,7 @@ public class ContextListener implements ServletContextListener {
 	}
 
 	public void contextInitialized(ServletContextEvent event) {
-		
+
 		System.out.println("------------>contextInitialized");
 
 		// obtain file name with locales descriptions

@@ -6,7 +6,7 @@
 
 <html>
 <head>
-<title>Show flight</title>
+<title>Admin Page</title>
 <style>
 body {
 	background-image: url("images/air2.jpg");
@@ -18,7 +18,7 @@ body {
 </style>
 </head>
 <body>
-<fmt:setBundle basename="resources" />
+	<fmt:setBundle basename="resources" />
 	<div align="center" style="padding-top: 15%">
 		<h1>Admin page</h1>
 

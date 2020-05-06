@@ -23,7 +23,8 @@ import java.io.IOException;
 
 @WebServlet(urlPatterns = {"/add-personal-to-order"})
 public class AddPersonalToOrderServlet extends HttpServlet {
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     	PersonalService personalService = new PersonalServiceImpl();
 		OrderService orderService = new OrderServiceImpl();
@@ -43,12 +44,9 @@ public class AddPersonalToOrderServlet extends HttpServlet {
 		personalService.updatePersonal(idPersonal, personalForUpdate);
 		orderService.updateOrder(idOrder, orderForUpdate);
 		
-		
 
         int idFlight = orderForUpdate.getIdFlight();
         request.setAttribute("idFlight",idFlight);
-        
-			
 
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher("views/orders/addOrder.jsp");
 		requestDispatcher.forward(request, response);

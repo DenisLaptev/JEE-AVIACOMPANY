@@ -15,6 +15,7 @@ public class FlightDAOImpl implements FlightDAO {
 
 	@Override
 	public boolean addFlight(Flight flight) {
+
 		boolean result = true;
 
 		DBHelper objectDBHelper = new DBHelper();
@@ -41,7 +42,6 @@ public class FlightDAOImpl implements FlightDAO {
 			ps.setString(5, orderStatus);
 			ps.setInt(6, idOrder);
 
-			// System.out.println(ps);
 			ps.executeUpdate();
 
 		} catch (Exception e) {
@@ -62,6 +62,7 @@ public class FlightDAOImpl implements FlightDAO {
 
 	@Override
 	public Flight getFlightById(int idFlight) {
+
 		Flight flight = null;
 
 		DBHelper objectDBHelper = new DBHelper();
@@ -79,7 +80,6 @@ public class FlightDAOImpl implements FlightDAO {
 			rs = ps.executeQuery();
 
 			while (rs.next()) {
-				// int idFlight = rs.getInt("idFlight");
 				String name = rs.getString("name");
 				String flightFrom = rs.getString("flightFrom");
 				String flightTo = rs.getString("flightTo");
@@ -87,7 +87,7 @@ public class FlightDAOImpl implements FlightDAO {
 				String orderStatus = rs.getString("orderStatus");
 				int idOrder = rs.getInt("idOrder");
 
-				flight = new Flight(idFlight, name, flightFrom, flightTo, date, orderStatus,idOrder);
+				flight = new Flight(idFlight, name, flightFrom, flightTo, date, orderStatus, idOrder);
 			}
 
 		} catch (Exception e) {
@@ -106,6 +106,7 @@ public class FlightDAOImpl implements FlightDAO {
 
 	@Override
 	public Flight getFlightByName(String name) {
+
 		Flight flight = null;
 
 		DBHelper objectDBHelper = new DBHelper();
@@ -131,7 +132,7 @@ public class FlightDAOImpl implements FlightDAO {
 				String orderStatus = rs.getString("orderStatus");
 				int idOrder = rs.getInt("idOrder");
 
-				flight = new Flight(idFlight, name, flightFrom, flightTo, date, orderStatus,idOrder);
+				flight = new Flight(idFlight, name, flightFrom, flightTo, date, orderStatus, idOrder);
 			}
 
 		} catch (Exception e) {
@@ -150,6 +151,7 @@ public class FlightDAOImpl implements FlightDAO {
 
 	@Override
 	public Flight getFlightByFrom(String from) {
+
 		Flight flight = null;
 
 		DBHelper objectDBHelper = new DBHelper();
@@ -175,7 +177,7 @@ public class FlightDAOImpl implements FlightDAO {
 				String orderStatus = rs.getString("orderStatus");
 				int idOrder = rs.getInt("idOrder");
 
-				flight = new Flight(idFlight, name, from, flightTo, date, orderStatus,idOrder);
+				flight = new Flight(idFlight, name, from, flightTo, date, orderStatus, idOrder);
 			}
 
 		} catch (Exception e) {
@@ -194,6 +196,7 @@ public class FlightDAOImpl implements FlightDAO {
 
 	@Override
 	public Flight getFlightByTo(String to) {
+
 		Flight flight = null;
 
 		DBHelper objectDBHelper = new DBHelper();
@@ -219,7 +222,7 @@ public class FlightDAOImpl implements FlightDAO {
 				String orderStatus = rs.getString("orderStatus");
 				int idOrder = rs.getInt("idOrder");
 
-				flight = new Flight(idFlight, name, flightFrom, to, date, orderStatus,idOrder);
+				flight = new Flight(idFlight, name, flightFrom, to, date, orderStatus, idOrder);
 			}
 
 		} catch (Exception e) {
@@ -238,6 +241,7 @@ public class FlightDAOImpl implements FlightDAO {
 
 	@Override
 	public Flight getFlightByDate(String date) {
+
 		Flight flight = null;
 
 		DBHelper objectDBHelper = new DBHelper();
@@ -263,7 +267,7 @@ public class FlightDAOImpl implements FlightDAO {
 				String orderStatus = rs.getString("orderStatus");
 				int idOrder = rs.getInt("idOrder");
 
-				flight = new Flight(idFlight, name, flightFrom, flightTo, date, orderStatus,idOrder);
+				flight = new Flight(idFlight, name, flightFrom, flightTo, date, orderStatus, idOrder);
 			}
 
 		} catch (Exception e) {
@@ -285,6 +289,7 @@ public class FlightDAOImpl implements FlightDAO {
 	 */
 	@Override
 	public List<Flight> getFlightByFromByToByDate(String from, String to, String date) {
+
 		List<Flight> flights = new ArrayList<>();
 
 		DBHelper objectDBHelper = new DBHelper();
@@ -308,7 +313,7 @@ public class FlightDAOImpl implements FlightDAO {
 				String orderStatus = rs.getString("orderStatus");
 				int idOrder = rs.getInt("idOrder");
 
-				Flight flight = new Flight(idFlight, name, from, to, date, orderStatus,idOrder);
+				Flight flight = new Flight(idFlight, name, from, to, date, orderStatus, idOrder);
 				flights.add(flight);
 			}
 
@@ -328,6 +333,7 @@ public class FlightDAOImpl implements FlightDAO {
 
 	@Override
 	public List<Flight> getAllFlights() {
+
 		List<Flight> flights = new ArrayList<>();
 
 		DBHelper objectDBHelper = new DBHelper();
@@ -351,7 +357,7 @@ public class FlightDAOImpl implements FlightDAO {
 				String orderStatus = rs.getString("orderStatus");
 				int idOrder = rs.getInt("idOrder");
 
-				Flight flight = new Flight(idFlight, name, flightFrom, flightTo, date, orderStatus,idOrder);
+				Flight flight = new Flight(idFlight, name, flightFrom, flightTo, date, orderStatus, idOrder);
 				flights.add(flight);
 			}
 
@@ -386,8 +392,8 @@ public class FlightDAOImpl implements FlightDAO {
 			int newIdOrder = newFlight.getIdOrder();
 
 			String query = "UPDATE flights SET name = '" + newName + "', flightFrom = '" + newFlightFrom
-					+ "', flightTo = '" + newFlightTo + "', date = '" + newDate + "', orderStatus = '" + newOrderStatus + "', idOrder = '" + newIdOrder
-					+ "' WHERE idFlight = ?";
+					+ "', flightTo = '" + newFlightTo + "', date = '" + newDate + "', orderStatus = '" + newOrderStatus
+					+ "', idOrder = '" + newIdOrder + "' WHERE idFlight = ?";
 
 			ps = connection.prepareStatement(query);
 
@@ -411,6 +417,7 @@ public class FlightDAOImpl implements FlightDAO {
 
 	@Override
 	public boolean deleteFlightById(int idFlight) {
+
 		boolean result = false;
 		int changedRowsNumber = 0;
 
@@ -447,6 +454,7 @@ public class FlightDAOImpl implements FlightDAO {
 
 	@Override
 	public List<Flight> getFreeFlightByOrderStatus(String orderStatus) {
+
 		List<Flight> flights = new ArrayList<>();
 
 		DBHelper objectDBHelper = new DBHelper();
@@ -470,7 +478,7 @@ public class FlightDAOImpl implements FlightDAO {
 				String date = rs.getString("date");
 				int idOrder = rs.getInt("idOrder");
 
-				Flight flight = new Flight(idFlight, name, flightFrom, flightTo, date, orderStatus,idOrder);
+				Flight flight = new Flight(idFlight, name, flightFrom, flightTo, date, orderStatus, idOrder);
 				flights.add(flight);
 			}
 

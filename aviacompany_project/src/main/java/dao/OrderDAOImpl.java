@@ -12,194 +12,198 @@ import java.util.List;
 
 public class OrderDAOImpl implements OrderDAO {
 
-    @Override
-    public boolean addOrder(Order order) {
-        boolean result = true;
+	@Override
+	public boolean addOrder(Order order) {
 
-        DBHelper objectDBHelper = new DBHelper();
-        Connection connection = objectDBHelper.getConnection();
+		boolean result = true;
 
-        PreparedStatement ps = null;
-        try {
+		DBHelper objectDBHelper = new DBHelper();
+		Connection connection = objectDBHelper.getConnection();
 
-            int idFlight = order.getIdFlight();
-            int idPersonal = order.getIdPersonal();
-            String status = order.getStatus();
+		PreparedStatement ps = null;
+		try {
 
-            String query = "INSERT INTO aviacompany_db.orders(idFlight, idPersonal, status) VALUES (?,?,?)";
+			int idFlight = order.getIdFlight();
+			int idPersonal = order.getIdPersonal();
+			String status = order.getStatus();
 
-            ps = connection.prepareStatement(query);
+			String query = "INSERT INTO aviacompany_db.orders(idFlight, idPersonal, status) VALUES (?,?,?)";
 
-            ps.setInt(1, idFlight);
-            ps.setInt(2, idPersonal);
-            ps.setString(3, status);
+			ps = connection.prepareStatement(query);
 
-            // System.out.println(ps);
-            ps.executeUpdate();
+			ps.setInt(1, idFlight);
+			ps.setInt(2, idPersonal);
+			ps.setString(3, status);
 
-        } catch (Exception e) {
-            System.out.println(e);
-            result = false;
-        } finally {
-            if (connection != null) {
-                try {
-                    connection.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
+			// System.out.println(ps);
+			ps.executeUpdate();
 
-        return result;
-    }
+		} catch (Exception e) {
+			System.out.println(e);
+			result = false;
+		} finally {
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
 
-    @Override
-    public Order getOrderById(int idOrder) {
-        Order order = null;
+		return result;
+	}
 
-        DBHelper objectDBHelper = new DBHelper();
-        Connection connection = objectDBHelper.getConnection();
+	@Override
+	public Order getOrderById(int idOrder) {
 
-        PreparedStatement ps = null;
-        ResultSet rs = null;
-        try {
+		Order order = null;
 
-            String query = "SELECT * FROM orders WHERE idOrder = ?";
-            ps = connection.prepareStatement(query);
+		DBHelper objectDBHelper = new DBHelper();
+		Connection connection = objectDBHelper.getConnection();
 
-            ps.setString(1, String.valueOf(idOrder));
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		try {
 
-            rs = ps.executeQuery();
+			String query = "SELECT * FROM orders WHERE idOrder = ?";
+			ps = connection.prepareStatement(query);
 
-            while (rs.next()) {
-                int idFlight = rs.getInt("idFlight");
-                int idPersonal = rs.getInt("idPersonal");
-                String status = rs.getString("status");
+			ps.setString(1, String.valueOf(idOrder));
 
-                order = new Order(idOrder, idFlight, idPersonal, status);
-            }
+			rs = ps.executeQuery();
 
-        } catch (Exception e) {
-            System.out.println(e);
-        } finally {
-            if (connection != null) {
-                try {
-                    connection.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        return order;
-    }
+			while (rs.next()) {
+				int idFlight = rs.getInt("idFlight");
+				int idPersonal = rs.getInt("idPersonal");
+				String status = rs.getString("status");
 
-    @Override
-    public List<Order> getAllOrders() {
-        List<Order> orders = new ArrayList<>();
+				order = new Order(idOrder, idFlight, idPersonal, status);
+			}
 
-        DBHelper objectDBHelper = new DBHelper();
-        Connection connection = objectDBHelper.getConnection();
+		} catch (Exception e) {
+			System.out.println(e);
+		} finally {
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return order;
+	}
 
-        PreparedStatement ps = null;
-        ResultSet rs = null;
-        try {
+	@Override
+	public List<Order> getAllOrders() {
 
-            String query = "SELECT * FROM orders";
-            ps = connection.prepareStatement(query);
+		List<Order> orders = new ArrayList<>();
 
-            rs = ps.executeQuery();
+		DBHelper objectDBHelper = new DBHelper();
+		Connection connection = objectDBHelper.getConnection();
 
-            while (rs.next()) {
-                int idOrder = rs.getInt("idOrder");
-                int idFlight = rs.getInt("idFlight");
-                int idPersonal = rs.getInt("idPersonal");
-                String status = rs.getString("status");
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		try {
 
-                Order order = new Order(idOrder, idFlight, idPersonal, status);
-                orders.add(order);
-            }
+			String query = "SELECT * FROM orders";
+			ps = connection.prepareStatement(query);
 
-        } catch (Exception e) {
-            System.out.println(e);
-        } finally {
-            if (connection != null) {
-                try {
-                    connection.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        return orders;
-    }
+			rs = ps.executeQuery();
 
-    @Override
-    public Order updateOrder(int idOrder, Order newOrder) {
+			while (rs.next()) {
+				int idOrder = rs.getInt("idOrder");
+				int idFlight = rs.getInt("idFlight");
+				int idPersonal = rs.getInt("idPersonal");
+				String status = rs.getString("status");
 
-        DBHelper objectDBHelper = new DBHelper();
-        Connection connection = objectDBHelper.getConnection();
+				Order order = new Order(idOrder, idFlight, idPersonal, status);
+				orders.add(order);
+			}
 
-        PreparedStatement ps = null;
-        try {
+		} catch (Exception e) {
+			System.out.println(e);
+		} finally {
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return orders;
+	}
 
-            int newIdFlight = newOrder.getIdFlight();
-            int newIdPersonal = newOrder.getIdPersonal();
-            String newStatus = newOrder.getStatus();
+	@Override
+	public Order updateOrder(int idOrder, Order newOrder) {
 
-            String query = "UPDATE orders SET idFlight = '" + newIdFlight + "', idPersonal = '" + newIdPersonal
-                    + "', status = '" + newStatus + "' WHERE idOrder = ?";
+		DBHelper objectDBHelper = new DBHelper();
+		Connection connection = objectDBHelper.getConnection();
 
-            ps = connection.prepareStatement(query);
+		PreparedStatement ps = null;
+		try {
 
-            ps.setInt(1, idOrder);
+			int newIdFlight = newOrder.getIdFlight();
+			int newIdPersonal = newOrder.getIdPersonal();
+			String newStatus = newOrder.getStatus();
 
-            // System.out.println(ps);
-            ps.executeUpdate();
+			String query = "UPDATE orders SET idFlight = '" + newIdFlight + "', idPersonal = '" + newIdPersonal
+					+ "', status = '" + newStatus + "' WHERE idOrder = ?";
 
-        } catch (Exception e) {
-            System.out.println(e);
-        } finally {
-            if (connection != null) {
-                try {
-                    connection.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
+			ps = connection.prepareStatement(query);
 
-        return newOrder;
-    }
+			ps.setInt(1, idOrder);
 
-    @Override
-    public boolean deleteOrderById(int idOrder) {
-        boolean result = true;
+			// System.out.println(ps);
+			ps.executeUpdate();
 
-        DBHelper objectDBHelper = new DBHelper();
-        Connection connection = objectDBHelper.getConnection();
+		} catch (Exception e) {
+			System.out.println(e);
+		} finally {
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
 
-        PreparedStatement ps = null;
-        try {
-            String query = "DELETE FROM orders WHERE idOrder = ?";
-            ps = connection.prepareStatement(query);
-            ps.setInt(1, idOrder);
+		return newOrder;
+	}
 
-            // System.out.println(ps);
-            ps.executeUpdate();
+	@Override
+	public boolean deleteOrderById(int idOrder) {
 
-            // connection.close();
-        } catch (Exception e) {
-            System.out.println(e);
-            result = false;
-        }finally {
-            if (connection != null) {
-                try {
-                    connection.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        return result;
-    }
+		boolean result = true;
+
+		DBHelper objectDBHelper = new DBHelper();
+		Connection connection = objectDBHelper.getConnection();
+
+		PreparedStatement ps = null;
+		try {
+			String query = "DELETE FROM orders WHERE idOrder = ?";
+			ps = connection.prepareStatement(query);
+			ps.setInt(1, idOrder);
+
+			// System.out.println(ps);
+			ps.executeUpdate();
+
+			// connection.close();
+		} catch (Exception e) {
+			System.out.println(e);
+			result = false;
+		} finally {
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		return result;
+	}
 }

@@ -23,6 +23,7 @@ import java.io.IOException;
 
 @WebServlet(urlPatterns = { "/add-flight-to-order" })
 public class AddFlightToOrderServlet extends HttpServlet {
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 

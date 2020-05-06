@@ -23,7 +23,6 @@ public class GetFreePersonByProfessionServlet extends HttpServlet {
         PersonService personService = new PersonServiceImpl();
 
         List<Person> freePersons = personService.getAllPersonsByProfession(profession);
-        //List<Person> freePersons = personService.getAllPersons();
         System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>GetFreePersonByProfessionServlet");
         System.out.println("freePersons="+freePersons);
         request.setAttribute("freePersons", freePersons);

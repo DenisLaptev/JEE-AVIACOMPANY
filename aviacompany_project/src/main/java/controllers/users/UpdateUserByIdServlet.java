@@ -14,6 +14,7 @@ import java.io.IOException;
 
 @WebServlet(urlPatterns = { "/update-user-by-id" })
 public class UpdateUserByIdServlet extends HttpServlet {
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 

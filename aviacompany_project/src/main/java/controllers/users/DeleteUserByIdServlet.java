@@ -24,7 +24,6 @@ public class DeleteUserByIdServlet extends HttpServlet {
     protected void doDelete(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
 

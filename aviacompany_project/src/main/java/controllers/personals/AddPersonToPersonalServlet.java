@@ -17,7 +17,8 @@ import java.io.IOException;
 
 @WebServlet(urlPatterns = {"/add-to-personal"})
 public class AddPersonToPersonalServlet extends HttpServlet {
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         PersonalService personalService = new PersonalServiceImpl();
         PersonService personService = new PersonServiceImpl();
@@ -29,9 +30,6 @@ public class AddPersonToPersonalServlet extends HttpServlet {
         Personal personalForUpdate = personalService.getPersonalById(idPersonal);
         Person personForUpdate = personService.getPersonById(personId);
         personForUpdate.setIdPersonal(idPersonal);
-
-
-
 
         switch(profession){
             case "Pilot1":
@@ -79,7 +77,6 @@ public class AddPersonToPersonalServlet extends HttpServlet {
 
         }
 
-
         personalService.updatePersonal(idPersonal, personalForUpdate);
         personService.updatePerson(personId,personForUpdate);
 
@@ -104,7 +101,5 @@ public class AddPersonToPersonalServlet extends HttpServlet {
 
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("views/personals/addPersonal.jsp");
         requestDispatcher.forward(request, response);
-
-        //response.sendRedirect("/add-personal");
     }
 }

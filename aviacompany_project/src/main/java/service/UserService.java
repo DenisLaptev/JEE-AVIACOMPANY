@@ -5,19 +5,20 @@ import main.java.model.User;
 
 public interface UserService {
 
-	//Create
+	// Create
 	boolean addUser(User user);
 
-	//Read
+	// Read
 	List<User> getAllUsers();
+
 	User getUserById(int idUser);
 
-	//Update
+	// Update
 	User updateUser(int idUser, User newUser);
 
-	//Delete
+	// Delete
 	boolean deleteUserById(int idUser);
 
-	User isRegistered(String userLogin,String userPassword);
+	User isRegistered(String userLogin, String userPassword);
 
 }

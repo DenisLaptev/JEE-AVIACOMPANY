@@ -11,8 +11,10 @@ import main.java.model.Flight;
 import main.java.model.Personal;
 
 public class PersonalServiceImpl implements PersonalService {
+
 	@Override
 	public List<Personal> getAllPersonals() {
+
 		PersonalDAO personalDAO = new PersonalDAOImpl();
 		List<Personal> allPersonalsList = new ArrayList<>();
 		allPersonalsList = personalDAO.getAllPersonals();
@@ -21,6 +23,7 @@ public class PersonalServiceImpl implements PersonalService {
 
 	@Override
 	public Personal getPersonalById(int idPersonal) {
+
 		PersonalDAO personalDAO = new PersonalDAOImpl();
 		Personal personal = personalDAO.getPersonalById(idPersonal);
 		return personal;
@@ -28,6 +31,7 @@ public class PersonalServiceImpl implements PersonalService {
 
 	@Override
 	public Personal updatePersonal(int idPersonal, Personal newPersonal) {
+
 		PersonalDAO personalDAO = new PersonalDAOImpl();
 		Personal updatedPersonal = personalDAO.updatePersonal(idPersonal, newPersonal);
 
@@ -37,6 +41,7 @@ public class PersonalServiceImpl implements PersonalService {
 
 	@Override
 	public boolean addPersonal(Personal personal) {
+
 		PersonalDAO personalDAO = new PersonalDAOImpl();
 		boolean result = personalDAO.addPersonal(personal);
 		return result;
@@ -44,6 +49,7 @@ public class PersonalServiceImpl implements PersonalService {
 
 	@Override
 	public boolean deletePersonalById(int idPersonal) {
+
 		PersonalDAO personalDAO = new PersonalDAOImpl();
 		boolean result = personalDAO.deletePersonalById(idPersonal);
 
@@ -53,16 +59,15 @@ public class PersonalServiceImpl implements PersonalService {
 
 	@Override
 	public void addPersonToPersonal(int idPerson, int idPersonal) {
+
 		PersonalDAO personalDAO = new PersonalDAOImpl();
 		personalDAO.addPersonToPersonal(idPerson, idPersonal);
 
-		//TODO
-		//update person info (change idPersonal)
 	}
 
 	@Override
 	public List<Personal> getFreePersonalByIdOrder(int idOrder) {
-		
+
 		PersonalDAO personalDAO = new PersonalDAOImpl();
 		List<Personal> personalList = new ArrayList<>();
 		personalList = personalDAO.getFreePersonalByIdOrder(idOrder);

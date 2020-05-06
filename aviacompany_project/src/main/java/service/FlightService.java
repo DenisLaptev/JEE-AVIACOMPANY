@@ -22,12 +22,10 @@ public interface FlightService {
 
 	List<Flight> getFreeFlightByOrderStatus(String orderStatus);
 
-	
 	// Update
 	Flight updateFlight(int idFlight, Flight newFlight);
 
 	// Delete
 	boolean deleteFlightById(int idFlight);
-
 
 }

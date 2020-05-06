@@ -10,8 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-
-@WebServlet(urlPatterns = {"/delete-person-by-id"})
+@WebServlet(urlPatterns = { "/delete-person-by-id" })
 public class DeletePersonByIdServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)

@@ -10,6 +10,7 @@ public class PersonServiceImpl implements PersonService {
 
 	@Override
 	public List<Person> getAllPersons() {
+
 		PersonDAO personDAO = new PersonDAOImpl();
 		List<Person> allPersonsList = new ArrayList<>();
 		allPersonsList = personDAO.getAllPersons();
@@ -19,7 +20,7 @@ public class PersonServiceImpl implements PersonService {
 	@Override
 	public List<Person> getAllPersonsByProfession(String profession) {
 
-		String realProfession=getRealProfession(profession);
+		String realProfession = getRealProfession(profession);
 
 		PersonDAO personDAO = new PersonDAOImpl();
 		List<Person> personsList = new ArrayList<>();
@@ -29,6 +30,7 @@ public class PersonServiceImpl implements PersonService {
 
 	@Override
 	public Person getPersonById(int idPerson) {
+
 		PersonDAO personDAO = new PersonDAOImpl();
 		Person person = personDAO.getPersonById(idPerson);
 		return person;
@@ -36,6 +38,7 @@ public class PersonServiceImpl implements PersonService {
 
 	@Override
 	public Person updatePerson(int idPerson, Person newPerson) {
+
 		PersonDAO personDAO = new PersonDAOImpl();
 		Person updatedPerson = personDAO.updatePerson(idPerson, newPerson);
 
@@ -45,6 +48,7 @@ public class PersonServiceImpl implements PersonService {
 
 	@Override
 	public boolean addPerson(Person person) {
+
 		PersonDAO personDAO = new PersonDAOImpl();
 		boolean result = personDAO.addPerson(person);
 		return result;
@@ -52,6 +56,7 @@ public class PersonServiceImpl implements PersonService {
 
 	@Override
 	public boolean deletePersonById(int idPerson) {
+
 		PersonDAO personDAO = new PersonDAOImpl();
 		boolean result = personDAO.deletePersonById(idPerson);
 
@@ -59,18 +64,18 @@ public class PersonServiceImpl implements PersonService {
 		return result;
 	}
 
-	public String getRealProfession(String profession){
+	public String getRealProfession(String profession) {
 
-		String realProfession="Profession";
+		String realProfession = "Profession";
 
-		if(profession.contains("Pilot")){
-			realProfession="Pilot";
-		}else if(profession.contains("Shturman")){
-			realProfession="Shturman";
-		}else if(profession.contains("Radist")){
-			realProfession="Radist";
-		}else if(profession.contains("Stuardes")){
-			realProfession="Stuardes";
+		if (profession.contains("Pilot")) {
+			realProfession = "Pilot";
+		} else if (profession.contains("Shturman")) {
+			realProfession = "Shturman";
+		} else if (profession.contains("Radist")) {
+			realProfession = "Radist";
+		} else if (profession.contains("Stuardes")) {
+			realProfession = "Stuardes";
 		}
 		return realProfession;
 	}
