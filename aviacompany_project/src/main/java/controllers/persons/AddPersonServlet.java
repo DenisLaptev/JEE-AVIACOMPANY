@@ -32,7 +32,10 @@ public class AddPersonServlet extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 
 		int idPerson = -1;
-		int idPersonal = Integer.parseInt(request.getParameter("idPersonal"));
+		int idPersonal = -1;
+		if (request.getParameter("idPersonal") != null) {
+			idPersonal = Integer.parseInt(request.getParameter("idPersonal"));
+		}
 		String firstName = request.getParameter("firstName");
 		String lastName = request.getParameter("lastName");
 		String profession = request.getParameter("profession");

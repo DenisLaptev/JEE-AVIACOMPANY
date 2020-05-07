@@ -71,4 +71,14 @@ public class UserServiceImpl implements UserService {
 		boolean result = userDAO.addUser(user);
 		return result;
 	}
+
+	@Override
+	public User getUserByLogin(String login) {
+		
+		UserDAO userDAO = new UserDAOImpl();
+		User user = userDAO.getUserByLogin(login);
+		
+		System.out.println("UserService: getUserByLogin: user="+user);
+		return user;
+	}
 }

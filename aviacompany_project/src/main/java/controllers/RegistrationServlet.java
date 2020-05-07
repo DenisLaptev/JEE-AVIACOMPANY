@@ -39,13 +39,21 @@ public class RegistrationServlet extends HttpServlet {
 
 		boolean isUnique = true;
 
-		List<User> allUsers = userService.getAllUsers();
-		for (User user : allUsers) {
-			if (user.getLogin().equals(login)) {
-				isUnique = false;
-				break;
-			}
+//		List<User> allUsers = userService.getAllUsers();
+//		for (User user : allUsers) {
+//			if (user.getLogin().equals(login)) {
+//				isUnique = false;
+//				break;
+//			}
+//		}
+		
+		User userFromDB = userService.getUserByLogin(login);
+		System.out.println("RegistrationServlet: userFromDB="+userFromDB);
+		
+		if (userFromDB!=null) {
+			isUnique = false;
 		}
+		System.out.println("RegistrationServlet: isUnique="+isUnique);
 
 		boolean isEmptyRow = (firstName.length() == 0) || (lastName.length() == 0) || (login.length() == 0)
 				|| (password.length() == 0);

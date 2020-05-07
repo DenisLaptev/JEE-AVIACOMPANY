@@ -221,4 +221,50 @@ public class UserDAOImpl implements UserDAO {
 		}
 		return result;
 	}
+
+	@Override
+	public User getUserByLogin(String login) {
+
+		User user = null;
+
+		DBHelper objectDBHelper = new DBHelper();
+		Connection connection = objectDBHelper.getConnection();
+
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		try {
+
+			String query = "SELECT * FROM users WHERE login = ?";
+			ps = connection.prepareStatement(query);
+
+			ps.setString(1, login);
+
+			rs = ps.executeQuery();
+
+			while (rs.next()) {
+
+				int idUser = rs.getInt("idUser");
+				String firstName = rs.getString("firstName");
+				String lastName = rs.getString("lastName");
+				// String login = rs.getString("login");
+				String password = rs.getString("password");
+				String role = rs.getString("role");
+
+				user = new User(idUser, firstName, lastName, login, password, role);
+			}
+
+		} catch (Exception e) {
+			System.out.println(e);
+		} finally {
+			if (connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		System.out.println("UserDAO: getUserByLogin: user="+user);
+		return user;
+	}
 }
