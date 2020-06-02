@@ -54,7 +54,12 @@ body {
 						</tr>
 						<tr>
 							<td>Role:</td>
-							<td><input type="text" name="role"></td>
+							<td><select id="dropdown" name = "role">
+									<option value="admin">admin</option>
+									<option value="dispatcher">dispatcher</option>
+									<option value="user">user</option>
+							</select></td>
+							<!-- <td><input type="text" name="role"></td> -->
 						</tr>
 						<tr>
 							<td align="right" colspan="2"><input type="submit"

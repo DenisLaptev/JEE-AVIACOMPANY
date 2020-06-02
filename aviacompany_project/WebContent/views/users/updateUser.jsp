@@ -1,4 +1,6 @@
 <%@ page import="main.java.model.User"%>
+<%@ page import="java.util.List"%>
+<%@ page import="java.util.ArrayList"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
@@ -73,11 +75,21 @@ body {
 						</tr>
 						<tr>
 							<td>Role:</td>
-							<td>
+							<%-- <td>
 								<%
 									out.println("<input type=\"text\" name=\"role\" value=\"" + userToUpdate.getRole() + "\">");
 								%>
-							</td>
+							</td> --%>
+							
+							<td><select id="dropdown" name = "role">
+									<option value="admin"
+										<c:if test="<%=userToUpdate.getRole().equals(\"admin\")%>"> selected </c:if>>admin</option>
+									<option value="dispatcher"
+										<c:if test="<%=userToUpdate.getRole().equals(\"dispatcher\")%>"> selected </c:if>>dispatcher</option>
+									<option value="user"
+										<c:if test="<%=userToUpdate.getRole().equals(\"user\")%>"> selected </c:if>>user</option>
+							</select></td>
+
 						</tr>
 						<tr>
 							<td align="right" colspan="2"><input type="submit"
